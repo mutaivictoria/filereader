@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %}
+<div class="main">
+  <div class="container">
+    <div class="title">
+      <h2 style="text-align: center">PDF TOOLS</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8" style="margin-top: 30px">
+        <form
+          action="{{url_for('index')}}"
+          method="post"
+          accept="text/csv"
+          id="form"
+          enctype="multipart/form-data"
+        >
+          <input type="file" name="file" />
+          <input type="submit" value="Upload" />
+        </form>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
