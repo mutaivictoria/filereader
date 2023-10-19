@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for,send_file
 import pandas as pd
 import os
 import helperfunctions.readerfunctions as helper
@@ -38,4 +38,10 @@ def index():
             df = helper.read_table(pdf_path)
 
             df.to_excel(csv_name, index=False, header=False,engine='openpyxl')
+            return render_template('index.html', filename=csv_name)
     return render_template("index.html")
+
+@app.route('/download/<filename>')
+def download_file(filename):
+    csv_path = os.path.join(filename)
+    return send_file(csv_path, as_attachment=True)
