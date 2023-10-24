@@ -45,3 +45,6 @@ def index():
 def download_file(filename):
     csv_path = os.path.join(filename)
     return send_file(csv_path, as_attachment=True)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')

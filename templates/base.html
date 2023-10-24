@@ -13,6 +13,13 @@
     />
     <link
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
     />
     <script
@@ -22,6 +29,60 @@
     ></script>
   </head>
   <body>
-    {% block content %} {% endblock %}
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Pdf Reader Tools</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+    <div class="main">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="sidebar d-flex flex-column vh-100">
+            <ul>
+              <li class="mt-4">
+                <a href="{{url_for('index')}}"
+                  ><span><i class="fa-regular fa-file-excel"></i> </span> File
+                  Converter</a
+                >
+              </li>
+              <li class="mt-4">
+                <a href="#"
+                  ><span><i class="fa-solid fa-file-signature"></i></span> File
+                  Rename</a
+                >
+              </li>
+              <li class="mt-4">
+                <span
+                  ><i
+                    class="fa-solid fa-check-double"
+                    style="color: #ffffff"
+                  ></i></span
+                ><a href="#"> Part Verification</a>
+              </li>
+              <li class="mt-4">
+                <span
+                  ><i
+                    class="fa-solid fa-file-pdf"
+                    style="color: #ffffff"
+                  ></i></span
+                ><a href="#"> Scanned PDF</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        {% block content %} {% endblock %}
+      </div>
+    </div>
   </body>
 </html>
