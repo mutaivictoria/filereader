@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
-<div class="col-md-8" style="margin-top: 30px">
+<div class="col-md-9 sm-11" style="margin-top: 30px">
   <form
-    action="{{url_for('index')}}"
+    action="{{url_for('phoenix')}}"
     method="post"
     accept="text/pdf"
     id="form"
@@ -18,5 +18,4 @@
   </p>
   {% endif %}
 </div>
-<div class="col-md-1"></div>
 {% endblock %}

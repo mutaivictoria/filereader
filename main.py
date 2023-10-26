@@ -41,6 +41,36 @@ def index():
             return render_template('index.html', filename=csv_name)
     return render_template("index.html")
 
+@app.route('/phoenix',methods=['GET', 'POST'])
+def phoenix():
+    if request.method == 'POST':
+        # Check if the post request has the file part
+       
+        if 'file' not in request.files:
+            return redirect(request.url)
+        file = request.files['file']
+        print(file.filename)
+
+        # If user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            return redirect(request.url)
+
+        if file:
+            # Save the uploaded PDF file
+            pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], 'input.pdf')
+            file.save(pdf_path)
+
+            # Specify the CSV file name
+            csv_name = 'output.xlsx'
+
+            # Process the PDF file and write to CSV
+            df = helper.read_phoenix_table(pdf_path)
+
+            df.to_excel(csv_name, index=False, header=False,engine='openpyxl')
+            return render_template('phoenix.html', filename=csv_name)
+    return render_template("phoenix.html")
+
 @app.route('/download/<filename>')
 def download_file(filename):
     csv_path = os.path.join(filename)

@@ -8,10 +8,9 @@ def read_table(path):
 
     with pdfplumber.open(path) as pdf:
         print(len(pdf.pages))
-        
+        print(pdf.pages[0].extract_text_lines())
         for page in pdf.pages:
             table_data = pdf.pages[count].extract_table()
-
             try:
                 for row in table_data:
                     # Append each row to the list
@@ -34,3 +33,26 @@ def read_table(path):
 
     # print(f'Data has been written to {csv_file_path}')
 
+def read_phoenix_table(path):
+    count = 0
+    headers_written = False  # Flag to check if headers have been written
+    rows = []  # List to store rows from all pages
+
+    with pdfplumber.open(path) as pdf:
+        for page in pdf.pages:
+            lines = pdf.pages[count].extract_text().split('\n')
+            item_description_found = False
+            print(type(lines))
+            for line in lines:
+                # print(line)
+                if 'Item Description' in line:
+                    item_description_found = True
+                if item_description_found:
+                    rows.append(line)
+                    if 'In accordance with' in line:
+                        item_description_found = False
+                        break
+                count += 1
+        df = pd.DataFrame(rows)
+        return df
+# read_phoenix_table('Phoenix Contact_Product(1721122)REACH 235-ROHS3_Sept 2023.pdf')
