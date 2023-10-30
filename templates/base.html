@@ -57,7 +57,7 @@
                 >
               </li>
               <li class="mt-4">
-                <a href="#"
+                <a href="{{url_for('rename_files')}}"
                   ><span><i class="fa-solid fa-file-signature"></i></span> File
                   Rename</a
                 >
@@ -68,7 +68,7 @@
                     class="fa-solid fa-check-double"
                     style="color: #ffffff"
                   ></i></span
-                ><a href="#"> Part Verification</a>
+                ><a href="{{url_for('verify_files')}}"> Part Verification</a>
               </li>
               <li class="mt-4">
                 <span
@@ -76,7 +76,7 @@
                     class="fa-solid fa-file-pdf"
                     style="color: #ffffff"
                   ></i></span
-                ><a href="#"> Scanned PDF</a>
+                ><a href="{{url_for('scanned_files')}}"> Scanned PDF</a>
               </li>
             </ul>
           </div>

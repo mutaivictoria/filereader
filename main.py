@@ -71,6 +71,18 @@ def phoenix():
             return render_template('phoenix.html', filename=csv_name)
     return render_template("phoenix.html")
 
+@app.route('/verify')
+def verify_files():
+    return render_template("verification.html")
+
+@app.route('/scanned_pdfs')
+def scanned_files():
+    return render_template("scanned.html")
+
+@app.route('/rename_files')
+def rename_files():
+    return render_template("rename.html")
+
 @app.route('/download/<filename>')
 def download_file(filename):
     csv_path = os.path.join(filename)
