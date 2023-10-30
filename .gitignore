@@ -2,4 +2,3 @@ virtual/
 __pycache__/
 *.csv
 *.xlsx
-*.pdf
