@@ -7,15 +7,21 @@
     id="form"
     enctype="multipart/form-data"
   >
-    <input type="file" name="file" />
+    <input type="file" name="file" id="file" accept=".pdf" required />
+
     <br /><br />
     <input type="submit" value="Upload" />
   </form>
-  <p>{{ filename }}</p>
-  {% if filename %}
-  <p>
-    <a href="{{ url_for('download_file', filename=filename) }}">Download CSV</a>
-  </p>
+  <br /><br />
+  <div class="container">
+    {% if filename %}
+    <h6>Your Download is ready</h6>
+    <p>
+      <a href="{{ url_for('download_file', filename=filename) }}"
+        >{{ filename }}</a
+      >
+    </p>
+  </div>
   {% endif %}
 </div>
 <div class="col-md-1"></div>

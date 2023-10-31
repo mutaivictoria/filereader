@@ -7,16 +7,13 @@ def read_table(path):
     rows = []  # List to store rows from all pages
 
     with pdfplumber.open(path) as pdf:
-        print(len(pdf.pages))
-        print(pdf.pages[0].extract_text_lines())
         for page in pdf.pages:
             table_data = pdf.pages[count].extract_table()
             try:
                 for row in table_data:
                     # Append each row to the list
                     rows.append(row)
-
-                print(f'Data from page {count + 1} has been collected')
+                # print(f'Data from page {count + 1} has been collected')
             except TypeError:
                 pass
             

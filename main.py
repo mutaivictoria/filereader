@@ -19,7 +19,6 @@ def index():
         if 'file' not in request.files:
             return redirect(request.url)
         file = request.files['file']
-        print(file.filename)
 
         # If user does not select file, browser also
         # submit an empty part without filename
@@ -28,11 +27,12 @@ def index():
 
         if file:
             # Save the uploaded PDF file
-            pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], 'input.pdf')
+            pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
             file.save(pdf_path)
 
             # Specify the CSV file name
-            csv_name = 'output.xlsx'
+            csv_name = os.path.splitext(file.filename)[0] +'.xlsx'
+
 
             # Process the PDF file and write to CSV
             df = helper.read_table(pdf_path)
@@ -49,7 +49,6 @@ def phoenix():
         if 'file' not in request.files:
             return redirect(request.url)
         file = request.files['file']
-        print(file.filename)
 
         # If user does not select file, browser also
         # submit an empty part without filename
@@ -58,11 +57,11 @@ def phoenix():
 
         if file:
             # Save the uploaded PDF file
-            pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], 'input.pdf')
+            pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
             file.save(pdf_path)
 
             # Specify the CSV file name
-            csv_name = 'output.xlsx'
+            csv_name = os.path.splitext(file.filename)[0] +'.xlsx'
 
             # Process the PDF file and write to CSV
             df = helper.read_phoenix_table(pdf_path)
