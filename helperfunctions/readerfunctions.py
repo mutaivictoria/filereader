@@ -1,27 +1,28 @@
 import pdfplumber
 import pandas as pd
+import tabula
 
-def read_table(path):
-    count = 0
-    headers_written = False  # Flag to check if headers have been written
-    rows = []  # List to store rows from all pages
+# def read_table(path):
+#     count = 0
+#     headers_written = False  # Flag to check if headers have been written
+#     rows = []  # List to store rows from all pages
 
-    with pdfplumber.open(path) as pdf:
-        for page in pdf.pages:
-            table_data = pdf.pages[count].extract_table()
-            try:
-                for row in table_data:
-                    # Append each row to the list
-                    rows.append(row)
-                # print(f'Data from page {count + 1} has been collected')
-            except TypeError:
-                pass
+#     with pdfplumber.open(path) as pdf:
+#         for page in pdf.pages:
+#             table_data = pdf.pages[count].extract_table()
+#             try:
+#                 for row in table_data:
+#                     # Append each row to the list
+#                     rows.append(row)
+#                 # print(f'Data from page {count + 1} has been collected')
+#             except TypeError:
+#                 pass
             
-            count += 1
+#             count += 1
 
-    # Create a DataFrame from the list of rows
-    df = pd.DataFrame(rows)
-    return df
+#     # Create a DataFrame from the list of rows
+#     df = pd.DataFrame(rows)
+#     return df
     # # Specify the CSV file path
     # csv_file_path = csvname
 
