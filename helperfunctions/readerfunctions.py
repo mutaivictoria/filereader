@@ -1,6 +1,5 @@
 import pdfplumber
 import pandas as pd
-import tabula
 
 # def read_table(path):
 #     count = 0
