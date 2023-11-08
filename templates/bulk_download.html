@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>File Downloader</title>
+  </head>
+  <body>
+    <h1>File Downloader</h1>
+    <form method="POST" action="/bulk_download">
+      <label for="url">File URL:</label>
+      <input type="text" name="url" id="url" required />
+      <br />
+      <label for="folder_name">Folder Name:</label>
+      <input type="text" name="folder_name" id="folder_name" required />
+      <br />
+      <button type="submit">Download</button>
+    </form>
+  </body>
+</html>

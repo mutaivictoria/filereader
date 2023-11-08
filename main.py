@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for,send_file
 import pandas as pd
+import tabula
 import os
 import helperfunctions.readerfunctions as helper
 
