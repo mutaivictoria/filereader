@@ -29,16 +29,16 @@ def index():
             # Save the uploaded PDF file
             pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
             file.save(pdf_path)
+            # Specify the Excel file name with the /tmp directory path
+            excel_name = os.path.join(app.config['UPLOAD_FOLDER'], os.path.splitext(file.filename)[0] + '.xlsx')
 
-            # Specify the CSV file name
-            csv_name = os.path.splitext(file.filename)[0] +'.xlsx'
-
-
-            # Process the PDF file and write to CSV
+            # Process the PDF file and write to Excel
             df = helper.read_table(pdf_path)
 
-            df.to_excel(csv_name, index=False, header=False,engine='openpyxl')
-            return render_template('index.html', filename=csv_name)
+            # Save the Excel file to the /tmp directory
+            df.to_excel(excel_name, index=False, header=False, engine='openpyxl')
+
+            return render_template('index.html', filename=excel_name)
     return render_template("index.html")
 
 @app.route('/phoenix',methods=['GET', 'POST'])
