@@ -6,7 +6,7 @@ import helperfunctions.readerfunctions as helper
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = '/tmp'
 ALLOWED_EXTENSIONS = {'pdf'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
