@@ -30,8 +30,10 @@ def index():
             pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
             file.save(pdf_path)
             # Specify the Excel file name with the /tmp directory path
-            excel_name = os.path.join(app.config['UPLOAD_FOLDER'], os.path.splitext(file.filename)[0] + '.xlsx')
+            # excel_name = os.path.join(app.config['UPLOAD_FOLDER'], os.path.splitext(file.filename)[0] + '.xlsx')
+            excel_name =os.path.splitext(file.filename)[0] + '.xlsx'
 
+            
             # Process the PDF file and write to Excel
             df = helper.read_table(pdf_path)
 
